@@ -1,15 +1,19 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 
-import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { TaskForm } from '../_model/models';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
-import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS } from '@angular/material';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { MAT_DATE_LOCALE, DateAdapter, MAT_DATE_FORMATS, MatTableDataSource } from '@angular/material';
 import { MomentDateAdapter, MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { COMMON_DIRECTIVES } from '@angular/common/src/directives';
+import { of } from 'rxjs';
 
 
-
+const DATA = [
+  {image: '../../../assets/images/avatars/carl.jpg', name: 'Tester Müller'},
+  {image: '../../../assets/images/avatars/Abbott.jpg', name: 'Toni Tortillia'},
+  {image: '../../../assets/images/avatars/joyce.jpg', name: 'Katharina -Kati- Kofler'},
+  {image: '../../../assets/images/avatars/Nancy.jpg', name: 'Lisa Liesinger '},
+];
 
 
 @Component({
@@ -34,6 +38,11 @@ export class AddTaskComponent implements OnInit {
   form: FormGroup;
   formErrors: any;
 
+  displayCompetenceStep: boolean;
+
+  dataSource = new MatTableDataSource<any>();
+  displayedColumns = ['image', 'name', 'actions'];
+
   constructor(
     private _formBuilder: FormBuilder
 )
@@ -50,18 +59,11 @@ export class AddTaskComponent implements OnInit {
         deadline : {},
 
     };
+
+    this.dataSource.data = DATA;
+    this.displayCompetenceStep = true;
+
   }
-
-  id: string;
-  name: string;
-  description: string;
-  priority: string;
-  project: string;
-
-  startDate: Date;
-  deadline: Date;
-  
-  competence: string;
 
   ngOnInit() {
       this.form = this._formBuilder.group({
@@ -72,6 +74,8 @@ export class AddTaskComponent implements OnInit {
         startDate: [new Date() , Validators.required],
         deadline: [''],
     });
+
+
 
     console.log("add-task");
   }
@@ -97,4 +101,15 @@ export class AddTaskComponent implements OnInit {
     getCurrentDateString(): string {
       return new Date().toLocaleDateString();
     }
-}
+
+
+    ableiten() {
+      this.displayCompetenceStep = false;
+
+      setTimeout(() => this.displayCompetenceStep = true, 5000);
+
+      //Stopped here
+
+    }
+
+  }

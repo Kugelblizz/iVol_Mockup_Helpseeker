@@ -15,7 +15,7 @@
         <div fxFlex="10"></div>
 
 
-        <mat-vertical-stepper [linear]="true" fxFlex="80">
+        <mat-vertical-stepper [linear]="false" fxFlex="80" class="mat-typography">
 
 
                 <mat-step [stepControl]="form">
@@ -29,7 +29,7 @@
                             <mat-form-field appearance="outline">
                                 <input matInput placeholder="Bezeichnung" formControlName="name" required>
                                 <mat-error *ngIf="form.get('name').invalid">
-                                    Aufgabe muss eine Beziechnung haben!
+                                    Aufgabe muss eine Bezeichnung haben!
                                 </mat-error>
                             </mat-form-field>
 
@@ -123,18 +123,87 @@
 
                         <ng-template matStepLabel>Freiwilligen hinzufügen</ng-template>
 
-                        <!-- <div fxFlex="1 0 auto" fxLayout="row">
+                        <div>
+                            Einen oder mehrere Freiwillige hinzufügen (optional)
+                        </div>
 
-                            <mat-form-field fxFlex="100">
-                                <textarea matInput placeholder="Address" formControlName="address" required>
-                                    1600 Amphitheatre Pkwy
-                                </textarea>
-                                <mat-error *ngIf="verticalStepperStep2Errors.address.required">
-                                    Address is required!
-                                </mat-error>
-                            </mat-form-field>
+                        <br>
 
-                        </div> -->
+                        <!-- <mat-accordion>
+                            <mat-expansion-panel [expanded]="true">
+                                <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Zuletzt verwendet
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    
+                                </mat-panel-description>
+                                </mat-expansion-panel-header> -->
+
+                                <mat-form-field appearance="outline" style="width: 300px">
+
+                                    <mat-label>Filter</mat-label>
+                                    <mat-select placeholder="Projekt" value="Zuletzt verwendet">
+                                        <mat-option value="Zuletzt verwendet">Zuletzt verwendet</mat-option>
+                                        <mat-option value="Favoriten">Favoriten</mat-option>
+                                        <mat-option value="Alle">Alle</mat-option>
+                                    </mat-select>
+
+                                </mat-form-field>
+
+                                <div fxLayout="row">
+                                    
+                                    <div fxFlex="10"></div>
+
+                                    <mat-table #table [dataSource]="dataSource" fxFlex="45">
+                                        <ng-container matColumnDef="image">
+                                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                                            <mat-cell *matCellDef="let entry">
+                                                <img class="avatar" src="{{entry.image}}">
+                                            </mat-cell>
+                                        </ng-container>
+                            
+                                        <ng-container matColumnDef="name">
+                                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                                            <mat-cell *matCellDef="let entry">{{entry.name}}</mat-cell>
+                                        </ng-container>
+            
+                                        <ng-container matColumnDef="actions">
+                                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                                            <mat-cell *matCellDef="let taskTemplate">
+                                                <mat-checkbox></mat-checkbox>
+                                            </mat-cell>
+                                        </ng-container>
+                                    
+                                        <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row> -->
+                                        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                    </mat-table>
+
+                                    <div fxFlex="35"></div>
+
+
+                                </div>
+                            
+                            <!-- </mat-expansion-panel>
+                              
+                            <mat-expansion-panel [expanded]="false">
+                                <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Alle Freiwillige
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    
+                                </mat-panel-description>
+                                </mat-expansion-panel-header>
+                            
+                                content
+                                
+                            </mat-expansion-panel>
+                            
+                        </mat-accordion> -->
+                      
+
+                        
 
                         <div class="pt-24" fxLayout="row" fxLayoutAlign="start start">
                             <button class="mr-8" mat-raised-button type="button" color="accent">
@@ -154,9 +223,39 @@
 
                 <mat-step>
 
-                        <ng-template matStepLabel>Kompetenz Ableiten</ng-template>
+                    <ng-template matStepLabel>Kompetenzen</ng-template>
 
-                        <div class="pt-24" fxLayout="row" fxLayoutAlign="start start">
+                    <div *ngIf="displayCompetenceStep" fxLayout="column"  style="height: 200px">
+
+                        <div style="padding-bottom: 10px">
+                            Kompetenzen können aufgrund der eingegebenen Daten abgeleitet oder manuell festgelegt werden.
+                        </div>
+
+                        
+
+                        <div fxLayout="row">
+                           
+                            <mat-form-field fxFlex="47" appearance="outline"> 
+                                <input matInput placeholder="Suchen">
+                            </mat-form-field>
+                           
+
+                            <div fxFlex="6">
+                                <div style="display: flex; justify-content: center; align-items: center; padding-top: 24px">
+                                oder
+                                </div>
+                            </div>
+     
+                            <div fxFlex="47" style="padding-top: 5px">
+                                <button class="mr-8" mat-flat-button type="button" color="accent" style="width: 100%; height: 68%;" (click)="ableiten()" >
+                                    Ableiten
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                        <div class="pt-24" fxLayout="row" fxLayoutAlign="start start" fxFlex="50">
                             <button class="mr-8" mat-raised-button type="button" color="accent">
                                 Abbrechen
                             </button>
@@ -168,7 +267,16 @@
                             </button>
                         </div>
 
-        
+                    </div>
+
+                    <div *ngIf="!displayCompetenceStep" style="height: 200px">
+                        
+                        
+
+                        <mat-spinner></mat-spinner>
+                        Ableitung erfolgt - kann etwas dauern
+
+                    </div>
 
                 </mat-step>
 

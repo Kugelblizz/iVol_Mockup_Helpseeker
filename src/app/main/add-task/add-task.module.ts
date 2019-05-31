@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {FuseSharedModule} from '@fuse/shared.module';
 
 import {AddTaskComponent} from './add-task.component';
-import { MatStepperModule, MatCommonModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatOptionModule, MatDatepickerModule } from '@angular/material';
+import { MatStepperModule, MatCommonModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatOptionModule, MatDatepickerModule, MatTableModule, MatExpansionModule, MatCheckboxModule, MatProgressSpinnerModule } from '@angular/material';
 
 
 
@@ -30,6 +30,11 @@ const routes = [
     MatSelectModule,
     MatOptionModule,
     MatDatepickerModule,
+    MatTableModule,
+    MatExpansionModule,
+    MatCheckboxModule,
+    MatProgressSpinnerModule,
+    
 
     FuseSharedModule
   ],
