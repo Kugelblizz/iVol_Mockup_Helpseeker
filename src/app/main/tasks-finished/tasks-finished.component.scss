@@ -1,0 +1,94 @@
+@import "src/@fuse/scss/fuse";
+
+.page-layout {
+
+    font-family: Muli,"Helvetica Neue",Arial,sans-serif;
+
+    .header {
+        position: relative;
+        flex: 1 0 auto;
+        height: 90px;
+        max-height: 90px;
+        background: #1A237E;
+        background: linear-gradient(to right, #0E2A3B 0%, #34306B 100%);
+        text-align: center;
+    
+        @include media-breakpoint('xs') {
+          height: 240px;
+          padding: 16px;
+        }
+    
+    
+        h1 {
+          color: white;
+          font-size: 40px;
+          font-weight: 300;
+          letter-spacing: 0.01em;
+          text-align: center;
+          margin-top: 0;
+          margin-bottom: 0px;
+    
+          @include media-breakpoint-down('xs') {
+            font-size: 24px;
+          }
+        }
+      }
+    
+      .table {
+        mat-row:nth-child(even) {
+          background-color: #afcbe6;
+        }
+    
+        mat-row:nth-child(odd) {
+          background-color: white;
+        }
+    
+        mat-row {
+          cursor: pointer;
+        }
+    
+        mat-row:hover {
+          opacity: 0.5;
+        }
+    
+      }
+    
+      .no-data {
+        font-size: 20px;
+        margin: 24px 0;
+        text-align: center;
+      }
+
+      
+
+}
+
+@import '~@angular/material/theming';
+@include mat-core();
+
+$my-app-primary:  mat-palette($mat-indigo, 900);
+$my-app-accent: mat-palette($mat-indigo, 50);
+
+$my-app-warn:    mat-palette($mat-deep-orange);
+
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+@include angular-material-theme($my-app-theme);
+
+.alternate-theme {
+  $alternate-primary: mat-palette($mat-light-blue);
+  $alternate-accent:  mat-palette($mat-yellow, 200);
+
+  $alternate-theme: mat-light-theme($alternate-primary, $alternate-accent);
+
+  @include angular-material-theme($alternate-theme);
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  min-width: 1px;
+  min-height: 1px;
+}

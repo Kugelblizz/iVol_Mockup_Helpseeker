@@ -1,0 +1,55 @@
+<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli|Roboto:300,400,500,700|Google+Sans">
+
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+
+    <div class="header mat-accent-bg p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+        <h1>Kompetenz verifzieren</h1>
+    </div>
+
+    <div>
+        <mat-form-field appearance="outline" style="width: 300px">
+
+                <mat-label>Filter</mat-label>
+                <mat-select placeholder="Projekt" value="Zuletzt verwendet">
+                    <mat-option value="Zuletzt verwendet">Zuletzt verwendet</mat-option>
+                    <mat-option value="Favoriten">Favoriten</mat-option>
+                    <mat-option value="Alle">Alle</mat-option>
+                </mat-select>
+
+            </mat-form-field>
+
+            <div fxLayout="row">
+                
+                <div fxFlex="5"></div>
+
+                <mat-table #table [dataSource]="dataSource" fxFlex="45">
+                    <ng-container matColumnDef="image">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let entry">
+                            <img class="avatar" src="{{entry.image}}">
+                        </mat-cell>
+                    </ng-container>
+        
+                    <ng-container matColumnDef="name">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let entry">{{entry.name}}</mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="actions">
+                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                        <mat-cell *matCellDef="let taskTemplate">
+                                <mat-radio-button></mat-radio-button>
+
+                        </mat-cell>
+                    </ng-container>
+                
+                    <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row> -->
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+
+                <div fxFlex="40"></div>
+
+
+            </div>
+    </div>  
+</div>

@@ -21,6 +21,8 @@ import { DashboardModule } from 'app/main/dashboard/dashboard.module';
 import { ProjectsModule } from 'app/main/projects/projects.module';
 import { TasksModule } from './main/tasks/tasks.module';
 import { AddTaskModule } from './main/add-task/add-task.module';
+import { TasksFinishedModule } from './main/tasks-finished/tasks-finished.module';
+import { VerifyCompetenceModule } from './main/verify-competence/verify-competence.module';
 
 const appRoutes: Routes = [
     {
@@ -52,8 +54,16 @@ const children: Routes = [
         loadChildren: './main/tasks/tasks.module#TasksModule',
     },
     {
+        path: 'tasksfinished',
+        loadChildren: './main/tasks-finished/tasks-finished.module#TasksFinishedModule',
+    },
+    {
         path: 'task/add',
         loadChildren: './main/add-task/add-task.module#AddTaskModule',
+    },
+    {
+        path: 'verifycompetence',
+        loadChildren: './main/verify-competence/verify-competence.module#VerifyCompetenceModule',
     },
 ];
 
@@ -92,6 +102,8 @@ const children: Routes = [
         ProjectsModule,
         TasksModule,
         AddTaskModule,
+        TasksFinishedModule,
+        VerifyCompetenceModule,
     ],
     bootstrap   : [
         AppComponent

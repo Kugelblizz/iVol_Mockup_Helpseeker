@@ -72,5 +72,20 @@ export const navigation: FuseNavigation[] = [
                 url      : '/templates',
             }
         ]
+    },
+
+    {
+        id       : 'etc',
+        title    : 'Sonstiges',
+        type     : 'group',
+        children : [
+            {
+                id: 'synch_comp',
+                title: 'Kompetenz verifizieren',
+                type: 'item',
+                icon : 'playlist_add_check',
+                url: '/verifycompetence', 
+            }
+        ]
     }
 ];
