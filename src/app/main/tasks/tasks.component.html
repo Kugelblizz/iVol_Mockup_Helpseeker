@@ -31,7 +31,7 @@
                     </div>
                 </button>
                 <mat-menu #newMenu="matMenu" xPosition="after" yPosition="below" [overlapTrigger]="false">
-                    <button mat-menu-item routerLink="/task/add">Neu</button>
+                    <button mat-menu-item routerLink="/task/add">neu Erstellen</button>
                     <button mat-menu-item>aus Vorlage</button>
                 </mat-menu>
             </div>
@@ -41,8 +41,7 @@
         </div> 
 
 
-        <div style="cursor: pointer">
-             <!-- routerLink="/task/add" > -->
+        <!-- <div style="cursor: pointer">
             <button mat-raised-button color="primary" matRipple [matMenuTriggerFor]="newMenu">
                 <div fxLayout="row" fxLayoutAlign="start center">
                 <mat-icon >add</mat-icon> 
@@ -53,9 +52,7 @@
                 <button mat-menu-item routerLink="/task/add">Neu</button>
                 <button mat-menu-item>aus Vorlage</button>
             </mat-menu>
-        </div>
-
-        <h2>Letzte Aufgaben</h2>
+        </div> -->
 
         <mat-table #table [dataSource]="dataSource" *ngIf="dataSource.data.length != 0">
             <ng-container matColumnDef="name">

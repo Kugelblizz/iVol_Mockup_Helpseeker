@@ -1,0 +1,50 @@
+<h1 mat-dialog-title> Datei hochladen</h1>
+<div mat-dialog-content>
+   
+    <div *ngIf="!duringUpload">
+        <div fxLayout="row">
+
+            <mat-form-field fxFlex style="width: 300px; padding: 0">
+                <input matInput placeholder="Pfad" value="C:\Users\WW\Downloads\Comp.json" disabled>
+            </mat-form-field>
+
+            <div fxFlex="2"></div>
+            
+            <div fxLayout="column">
+                <div fxFlex="13"></div>
+                <button fxFlex mat-raised-button color="primary">Suchen</button>
+                <div fxFlex="40"></div>
+            </div>
+
+        </div>
+
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            <button mat-raised-button color="primary" (click)="onClickedUpload()">Hochladen</button>
+        </div>
+
+        <div style="padding-top: 100px"></div>
+    </div>
+
+    <div *ngIf="duringUpload" fxLayout="column" fxLayoutAlign="start center">
+         <!-- style="height: 220px"> -->
+        <!-- <div></div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div></div>    
+            <div><mat-progress-bar mode="indeterminate"></mat-progress-bar></div>
+            <div></div>
+        </div>
+        <div></div> -->
+        
+        <div style="padding-top: 15%"></div>
+        <div>Datei wird hochgeladen</div>
+        <mat-progress-bar mode="determinate" [value]="percentageValue"></mat-progress-bar>
+        <div>{{percentageValue}} %</div>
+
+    </div>
+</div>
+
+<div *ngIf="!duringUpload" mat-dialog-actions>
+  <button *ngIf="!uploadFinished" mat-raised-button  (click)="onNoClick()">Abbrechen</button>
+  <button *ngIf="uploadFinished" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Fertig</button>
+</div>

@@ -3,11 +3,114 @@
 <div class="page-layout blank p-24" fusePerfectScrollbar>
 
     <div class="header mat-accent-bg p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
-        <h1>Kompetenz verifzieren</h1>
+        <h1>Kompetenz verifizieren</h1>
     </div>
 
-    <div>
-        <mat-form-field appearance="outline" style="width: 300px">
+    <div style="padding-top: 20px"></div>
+
+    <div class="mat-card">
+
+        <div style="padding-top: 20px"></div>
+
+
+        <div fxLayout="row" >
+            
+            <div fxFlex="3"></div>
+            
+            <div fxFlex class="mat-title">Zum verifizieren bitte entsprechende Datei hochladen</div>
+        </div>
+        
+        <div fxLayout="row">
+            <div fxFlex="3"></div>
+
+            <div fxFlex>
+                <button mat-raised-button color="primary" matRipple (click)="openFakeUploader()">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon >cloud_upload</mat-icon> 
+                    <div> &nbsp; Datei hochladen</div>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <div style="padding-top: 30px"></div>
+    
+    </div>
+    
+    <div style="padding-top: 25px"></div>
+    
+    <div class="mat-card" *ngIf="uploadSuccessful">
+
+
+        <!-- {image: '../../../assets/images/avatars/joyce.jpg', name: 'Katharina -Kati- Kofler'}, -->
+
+        <div style="padding-top: 20px"></div>
+
+        <div fxLayout="row" fxLayoutAlign="start center">
+            
+            <div style="padding-right: 100px"></div>
+
+            <img src="../../../assets/images/avatars/joyce.jpg">
+
+            <div style="padding-right: 25px"></div>
+
+            
+            <div fxLayout="column" fxLayoutAlign="start start">
+                <div class="mat-display-1" style="padding-top: 10px">Katharina 'Kati' Kofler</div>
+                <div class="mat-title">Tätig bei:</div>
+            </div>
+
+        </div>
+
+        <div style="padding-top: 15px"></div>
+
+        <div fxLayout="row">
+    
+            <div fxFlex="15"></div>
+
+            <mat-table #table [dataSource]="verifiedDataSource" fxFlex="60">
+                <ng-container matColumnDef="competence">
+                    <mat-header-cell *matHeaderCellDef>Kompetenz</mat-header-cell>
+                    <mat-cell *matCellDef="let entry">
+                        {{entry.competence}}
+                    </mat-cell>
+                </ng-container>
+    
+                <ng-container matColumnDef="attainedDate">
+                    <mat-header-cell *matHeaderCellDef>Erhalten am</mat-header-cell>
+                    <mat-cell *matCellDef="let entry">{{entry.attainedDate}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="verifiedStatus">
+                        <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                        <mat-cell *matCellDef="let entry">
+                            <div fxLayout="row" fxLayoutAlign="start center">
+                                <mat-icon>{{entry.icon}}</mat-icon>
+                                <div style="padding-right: 5px"></div>
+                                <div>{{entry.verifiedStatus}}</div>    
+                            </div>
+                        </mat-cell>
+                    </ng-container>
+            
+                <mat-header-row *matHeaderRowDef="verifiedDisplayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: verifiedDisplayedColumns;"></mat-row>
+            </mat-table>
+
+            <div fxFlex="25"></div>
+        </div>
+
+        <div style="padding-bottom: 25px"></div>
+
+
+    </div>  
+</div>
+                
+
+        <!-- <div fxLayout="row">
+
+            <div fxFlex="3"></div>
+
+            <mat-form-field fxFlex="20" appearance="outline" style="width: 300px">
 
                 <mat-label>Filter</mat-label>
                 <mat-select placeholder="Projekt" value="Zuletzt verwendet">
@@ -18,38 +121,51 @@
 
             </mat-form-field>
 
-            <div fxLayout="row">
-                
-                <div fxFlex="5"></div>
+            <div fxFlex="77"></div>
 
-                <mat-table #table [dataSource]="dataSource" fxFlex="45">
-                    <ng-container matColumnDef="image">
-                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                        <mat-cell *matCellDef="let entry">
-                            <img class="avatar" src="{{entry.image}}">
-                        </mat-cell>
-                    </ng-container>
-        
-                    <ng-container matColumnDef="name">
-                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                        <mat-cell *matCellDef="let entry">{{entry.name}}</mat-cell>
-                    </ng-container>
+        </div> -->
 
-                    <ng-container matColumnDef="actions">
-                        <mat-header-cell *matHeaderCellDef></mat-header-cell>
-                        <mat-cell *matCellDef="let taskTemplate">
-                                <mat-radio-button></mat-radio-button>
+        <!-- <div fxLayout="row">
+            
+            <div fxFlex="15"></div>
 
-                        </mat-cell>
-                    </ng-container>
-                
-                    <!-- <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row> -->
-                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-                </mat-table>
+            <mat-table #table [dataSource]="dataSource" fxFlex="45">
+                <ng-container matColumnDef="image">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let entry">
+                        <img class="avatar" src="{{entry.image}}">
+                    </mat-cell>
+                </ng-container>
+    
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let entry">{{entry.name}}</mat-cell>
+                </ng-container>
 
-                <div fxFlex="40"></div>
+                <ng-container matColumnDef="actions">
+                    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                    <mat-cell *matCellDef="let taskTemplate">
+                            <mat-radio-button></mat-radio-button>
+
+                    </mat-cell>
+                </ng-container>
+            
+                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+
+            <div fxFlex="30"></div>
 
 
-            </div>
-    </div>  
-</div>
+        </div> -->
+
+        <!-- <div>
+            <button mat-raised-button color="primary" matRipple (click)="openFakeUploader()">
+                <div fxLayout="row" fxLayoutAlign="start center">
+                <mat-icon >cloud_upload</mat-icon> 
+                <div> &nbsp; Datei hochladen</div>
+                </div>
+            </button>
+        </div> -->
+
+

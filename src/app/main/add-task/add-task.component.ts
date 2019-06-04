@@ -15,10 +15,10 @@ const DATA = [
 ];
 
 const DATA_2 = [
-  {competence: 'Kompetenz 1'},
-  {competence: 'Kompetenz 2'},
-  {competence: 'Kompetenz 3'},
-  {competence: 'Kompetenz 4'}
+  {competence: 'Teamfähigkeit'},
+  {competence: 'Kommunikationsfähigkeit'},
+  {competence: 'Zuverlässigkeit'},
+  {competence: 'Projektmanagement'}
 ]
 
 

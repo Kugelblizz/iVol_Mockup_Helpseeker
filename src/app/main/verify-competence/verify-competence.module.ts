@@ -3,8 +3,8 @@ import {RouterModule} from '@angular/router';
 
 import {FuseSharedModule} from '@fuse/shared.module';
 
-import {VerifyCompetenceComponent} from './verify-competence.component';
-import { MatIconModule, MatCheckboxModule, MatCommonModule, MatOptionModule, MatSelectModule, MatTableModule, MatRadioModule } from '@angular/material';
+import {VerifyCompetenceComponent, FakeUploader} from './verify-competence.component';
+import { MatIconModule, MatCheckboxModule, MatCommonModule, MatOptionModule, MatSelectModule, MatTableModule, MatRadioModule, MatButtonModule, MatDialogModule, MatInputModule, MatProgressSpinnerModule, MatProgressBar, MatProgressBarModule } from '@angular/material';
 
 
 
@@ -18,7 +18,9 @@ const routes = [
 @NgModule({
   declarations: [
     VerifyCompetenceComponent,
-  ],
+    FakeUploader
+    
+    ],
   imports: [
     RouterModule.forChild(routes),
 
@@ -28,18 +30,29 @@ const routes = [
     MatOptionModule,
     MatSelectModule,
     MatTableModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
 
     MatRadioModule,
-    
-    
+    MatButtonModule,
+    MatDialogModule,
 
 
     FuseSharedModule
   ],
   exports: [
-    VerifyCompetenceComponent
+    VerifyCompetenceComponent,
+
+  ],
+
+  entryComponents: [
+    FakeUploader
   ]
+
 })
 
 export class VerifyCompetenceModule {
 }
+
+
