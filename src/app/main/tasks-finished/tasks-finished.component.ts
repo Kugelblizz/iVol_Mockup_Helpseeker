@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
 
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 import { MatTableDataSource } from '@angular/material';
@@ -25,11 +25,14 @@ const DATA: TaskTemplate[] = [
   templateUrl: './tasks-finished.component.html',
   styleUrls: ['./tasks-finished.component.scss']
 })
-export class TasksFinishedComponent implements OnInit {
+export class TasksFinishedComponent implements OnInit, AfterViewInit {
 
   dataSource = new MatTableDataSource<TaskTemplate>();
   displayedColumns = ['name', 'creator', 'modifiedOn', 'status', 'actions'];
   insertedTaskName = insertedTaskName;
+
+  fadedIn: boolean;
+
 
   constructor() {
     this.dataSource.data = DATA;
@@ -37,7 +40,20 @@ export class TasksFinishedComponent implements OnInit {
 
   ngOnInit() {
    
+    this.fadedIn = true;
+
+
     console.log("Tasks");
+
+    
   }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      this.fadedIn = false;
+    }, 10000);
+  }
+
+  
 
 }

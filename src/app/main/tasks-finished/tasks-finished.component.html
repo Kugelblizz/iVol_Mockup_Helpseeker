@@ -17,16 +17,23 @@
             <img src="../../../assets/images/placeholders/400x400.jpg">
         </div>
 
+        <div style="padding-top: 10px"></div>
 
         <div fxLayout="row" fxLayoutAlign="space-between center">
             <div></div>
-            <h2>Aufgabe '{{insertedTaskName}}' hinzugefügt</h2>
+        
+            <div *ngIf="fadedIn" style="background-color: lightgreen; padding-left: 200px; padding-right: 200px; padding-bottom: 2px; padding-top: 2px">
+                <div style="color: green; font-size: 17px">Aufgabe '{{insertedTaskName}}' hinzugefügt</div>
+            </div>
+
             <div></div>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="space-between center">
 
+            
             <h2>Die letzten 5 Aufgaben</h2>
+            
 
             <div style="cursor: pointer">
                 <!-- routerLink="/task/add" > -->

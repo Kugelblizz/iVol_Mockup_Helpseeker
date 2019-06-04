@@ -18,8 +18,27 @@
         </div>
 
 
-        <h1>Jackdaws love my big sphinx of quartz.</h1>
-        <h2>The quick brown fox jumps over the lazy dog.</h2>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+
+            <h2>Die letzten 5 Aufgaben</h2>
+
+            <div style="cursor: pointer">
+                <!-- routerLink="/task/add" > -->
+                <button mat-raised-button color="primary" matRipple [matMenuTriggerFor]="newMenu">
+                    <div fxLayout="row" fxLayoutAlign="start center">
+                    <mat-icon >add</mat-icon> 
+                    <div> &nbsp; Neue Aufgabe</div>
+                    </div>
+                </button>
+                <mat-menu #newMenu="matMenu" xPosition="after" yPosition="below" [overlapTrigger]="false">
+                    <button mat-menu-item routerLink="/task/add">Neu</button>
+                    <button mat-menu-item>aus Vorlage</button>
+                </mat-menu>
+            </div>
+
+            
+
+        </div> 
 
 
         <div style="cursor: pointer">
