@@ -85,7 +85,9 @@
                         <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
                         <mat-cell *matCellDef="let entry">
                             <div fxLayout="row" fxLayoutAlign="start center">
-                                <mat-icon>{{entry.icon}}</mat-icon>
+                                
+                                <mat-icon *ngIf="entry.color=='green'" class="green-fg">{{entry.icon}}</mat-icon>
+                                <mat-icon *ngIf="entry.color!='green'" class="red-fg">{{entry.icon}}</mat-icon>
                                 <div style="padding-right: 5px"></div>
                                 <div>{{entry.verifiedStatus}}</div>    
                             </div>

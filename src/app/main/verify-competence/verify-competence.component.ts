@@ -11,11 +11,11 @@ const DATA = [
 ];
 
 const DATA_VERIFIED = [
-  {competence: 'Projektmanagement', attainedDate: '-', verifiedStatus: 'ungültig', icon: 'close'},
-  {competence: 'Zuverlässigkeit', attainedDate: '3.12.2018, 15:48:08', verifiedStatus: 'verifiziert', icon: 'check'},
-  {competence: 'Gewissenhaftigkeit', attainedDate: '1.7.2018, 17:11:53', verifiedStatus: 'verifiziert', icon: 'check'},
-  {competence: 'Kommunikationsfähigkeit', attainedDate: '1.1.2018, 00:00:01', verifiedStatus: 'verifiziert', icon: 'check'},
-  {competence: 'Teamfähigkeit', attainedDate: '1.1.2018, 00:00:01', verifiedStatus: 'verifiziert', icon: 'check'},
+  {competence: 'Projektmanagement', attainedDate: '-', verifiedStatus: 'ungültig', icon: 'close', color: 'red'},
+  {competence: 'Zuverlässigkeit', attainedDate: '3.12.2018, 15:48:08', verifiedStatus: 'verifiziert', icon: 'check', color: 'green'},
+  {competence: 'Gewissenhaftigkeit', attainedDate: '1.7.2018, 17:11:53', verifiedStatus: 'verifiziert', icon: 'check', color: 'green'},
+  {competence: 'Kommunikationsfähigkeit', attainedDate: '1.1.2018, 00:00:01', verifiedStatus: 'verifiziert', icon: 'check', color: 'green'},
+  {competence: 'Teamfähigkeit', attainedDate: '1.1.2018, 00:00:01', verifiedStatus: 'verifiziert', icon: 'check', color: 'green'},
 ];
 
 export interface DialogData {
@@ -25,6 +25,7 @@ export interface DialogData {
 @Component({
   selector: 'fake-uploader',
   templateUrl: 'fake-uploader.html',
+  styleUrls: ['./verify-competence.component.scss']
 })
 export class FakeUploader {
 

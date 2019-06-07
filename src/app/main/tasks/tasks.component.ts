@@ -25,11 +25,67 @@ export class TasksComponent implements OnInit {
   dataSource = new MatTableDataSource<TaskTemplate>();
   displayedColumns = ['name', 'creator', 'modifiedOn', 'status', 'actions'];
 
+  widget0: any;
+  widget1: any; 
+  widget2: any;
+  widget3: any;
+
   constructor() {
     this.dataSource.data = DATA;
   }
 
   ngOnInit() {
+    this.widget0 = {
+      'title' : 'Aufgaben abgeschlossen',
+      'data'  : {
+          'label': 'AUFGABEN',
+          'count': 50,
+          'extra': {
+              'label': 'Gestern',
+              'count': 47
+          }
+      },
+      'detail': 'You can show some detailed information about this widget in here.'
+    };
+  
+    this.widget1 = {
+      'title' : 'Aufgaben noch offen',
+      'data'  : {
+          'label': 'AUFGABEN',
+          'count': 22,
+          'extra': {
+              'label': 'Gestern',
+              'count': 25
+          }
+      },
+      'detail': 'You can show some detailed information about this widget in here.'
+    };
+  
+    this.widget2 = {
+      'title' : 'Aufgaben mit hoher Priorität',
+      'data'  : {
+          'label': 'AUFGABEN',
+          'count': 10,
+          'extra': {
+              'label': 'Gestern',
+              'count': 8
+          }
+      },
+      'detail': 'You can show some detailed information about this widget in here.'
+    };
+  
+    this.widget3 = {
+      'title' : 'Aufgaben die in Kürze auslaufen',
+      'data'  : {
+          'label': 'AUFGABEN',
+          'count': 5,
+          'extra': {
+              'label': 'Gestern',
+              'count': 5
+          }
+      },
+      'detail': 'You can show some detailed information about this widget in here.'
+    };
    
     console.log("Tasks");
   }

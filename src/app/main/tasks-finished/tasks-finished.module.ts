@@ -5,6 +5,8 @@ import {FuseSharedModule} from '@fuse/shared.module';
 
 import {TasksFinishedComponent} from './tasks-finished.component';
 import { MatTableModule, MatIconModule, MatButtonModule, MatRippleModule, MatMenuModule } from '@angular/material';
+import { FuseWidgetModule } from '@fuse/components';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -29,7 +31,10 @@ const routes = [
     MatRippleModule,
     MatMenuModule,
 
-    FuseSharedModule
+    BrowserAnimationsModule,
+
+    FuseSharedModule,
+    FuseWidgetModule
   ],
   exports: [
     TasksFinishedComponent
