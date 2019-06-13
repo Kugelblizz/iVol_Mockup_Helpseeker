@@ -3,7 +3,26 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.service';
 
 import { Chart } from "chart.js";
+import { MatTableDataSource } from '@angular/material';
  
+
+const DATA = [
+  {engAsset: 'Project Management', assetType: 'Competence', issuer: 'ÖRK', date: '-', status: 'close'},
+  {engAsset: 'Yearly Feedback', assetType: 'Feedback', issuer: 'ÖRK', date: '3.12.2018',  status: 'check'},
+  {engAsset: 'Diligence', assetType: 'Competence', issuer: 'ÖRK', date: '1.7.2018',  status: 'check'},
+  {engAsset: 'Communication Skills', assetType: 'Competence', issuer: 'ÖRK', date: '1.1.2018', status: 'check'},
+  {engAsset: 'Teamwork', assetType: 'Competence', issuer: 'ÖRK', date: '1.1.2018', status: 'check'},
+];
+
+const DATA_TASKS = [
+  {label: 'Task 1', issuer: 'ÖRK', date: new Date(1559033133000), status: 'Bereit zum Veröffentlichen'},
+  {label: 'Task 2', issuer: 'FF Krems', date: new Date(1558820054000), status: 'Veröffentlicht'},
+  {label: 'Task 2', issuer: 'FF Krems', date: new Date(1558788901000), status: 'Veröffentlicht'},
+  {label: 'Task 2', issuer: 'ÖRK', date: new Date(1558513352000), status: 'Abgelaufen'},
+  {label: 'Task 2', issuer: 'ÖRK', date: new Date(1558314179000), status: 'Beendet'}
+
+
+];
 
 
 @Component({
@@ -29,7 +48,18 @@ export class DashboardComponent implements OnInit {
   widget3: any;
 
 
+  dataSource = new MatTableDataSource<any>();
+  displayedColumns = ['engAsset', 'assetType', 'issuer', 'date', 'status'];
+
+  dataSourceTasks = new MatTableDataSource<any>();
+  displayedColumnsTasks = ['label', 'issuer', 'date', 'status', 'actions'];
+
+
   ngOnInit() {
+
+
+    this.dataSource.data = DATA;
+    this.dataSourceTasks.data = DATA_TASKS;
 
     this.chart1 = new Chart(this.chartRef1.nativeElement, {
     type: 'pie',
@@ -150,12 +180,12 @@ export class DashboardComponent implements OnInit {
 
 
   this.widget0 = {
-    'title' : 'Aufgaben abgeschlossen',
+    'title' : 'Tasks finished (this month)',
     'data'  : {
-        'label': 'AUFGABEN',
+        'label': 'TASKS',
         'count': 50,
         'extra': {
-            'label': 'Gestern',
+            'label': 'Yesterday',
             'count': 47
         }
     },
@@ -163,12 +193,12 @@ export class DashboardComponent implements OnInit {
   };
 
   this.widget1 = {
-    'title' : 'Aufgaben noch offen',
+    'title' : 'Tasks still open',
     'data'  : {
-        'label': 'AUFGABEN',
+        'label': 'TASKS',
         'count': 22,
         'extra': {
-            'label': 'Gestern',
+            'label': 'Yesterday',
             'count': 25
         }
     },
@@ -176,26 +206,26 @@ export class DashboardComponent implements OnInit {
   };
 
   this.widget2 = {
-    'title' : 'Aufgaben mit hoher Priorität',
+    'title' : 'Your open Tasks at ÖRK',
     'data'  : {
-        'label': 'AUFGABEN',
-        'count': 10,
+        'label': 'TASKS',
+        'count': 12,
         'extra': {
-            'label': 'Gestern',
-            'count': 8
+            'label': 'Yesterday',
+            'count': 14
         }
     },
     'detail': 'You can show some detailed information about this widget in here.'
   };
 
   this.widget3 = {
-    'title' : 'Aufgaben die in Kürze auslaufen',
+    'title' : 'Your open Tasks at FF Krems',
     'data'  : {
-        'label': 'AUFGABEN',
-        'count': 5,
+        'label': 'TASKS',
+        'count': 10,
         'extra': {
-            'label': 'Gestern',
-            'count': 5
+            'label': 'Yesterday',
+            'count': 11
         }
     },
     'detail': 'You can show some detailed information about this widget in here.'

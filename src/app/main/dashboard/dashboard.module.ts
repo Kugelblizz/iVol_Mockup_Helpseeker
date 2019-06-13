@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {FuseSharedModule} from '@fuse/shared.module';
 
 import {DashboardComponent} from './dashboard.component';
-import { MatIconModule } from '@angular/material';
+import { MatIconModule, MatButtonModule, MatTableModule, MatIcon } from '@angular/material';
 import { FuseWidgetModule } from '@fuse/components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -27,6 +27,11 @@ const routes = [
     MatIconModule,
 
     BrowserAnimationsModule,
+
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule,
+    
 
     FuseSharedModule,
     FuseWidgetModule

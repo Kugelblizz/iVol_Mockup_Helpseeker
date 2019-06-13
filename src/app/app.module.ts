@@ -23,6 +23,9 @@ import { TasksModule } from './main/tasks/tasks.module';
 import { AddTaskModule } from './main/add-task/add-task.module';
 import { TasksFinishedModule } from './main/tasks-finished/tasks-finished.module';
 import { VerifyCompetenceModule } from './main/verify-competence/verify-competence.module';
+import { ConfigPageModule } from "./main/config-page/config-page.module";
+import { RecruitViewModule } from './main/recruit-view/recruit-view.module';
+
 
 const appRoutes: Routes = [
     {
@@ -65,6 +68,14 @@ const children: Routes = [
         path: 'verifycompetence',
         loadChildren: './main/verify-competence/verify-competence.module#VerifyCompetenceModule',
     },
+    {
+        path: 'config',
+        loadChildren: './main/config-page/config-page.module#ConfigPageModule',
+    },
+    {
+        path: 'recruit',
+        loadChildren: './main/recruit-view/recruit-view.module#RecruitViewModule',
+    },
 ];
 
 @NgModule({
@@ -104,6 +115,8 @@ const children: Routes = [
         AddTaskModule,
         TasksFinishedModule,
         VerifyCompetenceModule,
+        ConfigPageModule,
+        RecruitViewModule,
     ],
     bootstrap   : [
         AppComponent

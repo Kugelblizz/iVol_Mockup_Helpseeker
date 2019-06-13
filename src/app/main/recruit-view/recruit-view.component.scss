@@ -41,7 +41,7 @@ $custom-typography: mat-typography-config(
         }
     }
 
-    .mat-column-actions {
+    .mat-column-status {
         flex: 0 0 55px;
     }
 
@@ -49,9 +49,9 @@ $custom-typography: mat-typography-config(
         flex: 0 0 100px;
     }
 
-    // .mat-column-name {
-    //     font-size: 20px;
-    // }
+    .mat-column-name {
+        font-size: 20px;
+    }
 
     .progressBar {
         height: 8px !important;
@@ -74,6 +74,13 @@ $custom-typography: mat-typography-config(
     padding: 0;
 }
 
+mat-expansion-panel,
+mat-expansion-panel-header {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
 
 

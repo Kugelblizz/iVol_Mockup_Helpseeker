@@ -1,0 +1,191 @@
+<link type="text/css" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Muli|Roboto:300,400,500,700|Google+Sans">
+
+
+<div class="page-layout blank p-24" fusePerfectScrollbar>
+
+    <div style="padding-top: 12px"></div>
+
+    <div class="header mat-accent-bg p-16 p-sm-24" fxLayout="column" fxLayoutAlign="center center">
+        <h1>Recruitment View</h1>
+    </div>
+
+    <br>
+
+    <div class="mat-card">
+
+        <div style="padding-top: 12px; padding-left: 50px; padding-right: 50px; padding-bottom: 12px">
+            <mat-accordion style="padding: 10px 0;">
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title fxLayout=row fxLayoutAlign="space-between center">
+                            <div fxLayout=row fxLayoutAlign="start start">
+                                <img class="avatar" src="../../../assets/images/avatars/Blair.jpg">
+                                <div style="padding-left: 10px"></div>
+                                <div style="padding-top: 7px; font-size: 19px">Toni Helfer</div>
+                            </div>
+                            <div fxLayout=row fxLayoutAlign="end center">
+                                <div>Verified Status </div>
+                                <div fxLayout=column fxLayoutAlign="center center">
+                                    <mat-progress-bar style="width:250px" class="progressBar" value=68></mat-progress-bar>
+                                    <div>68%</div>
+                                </div> 
+                            </div>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                </mat-expansion-panel>
+
+                <mat-expansion-panel expanded=true>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title fxLayout=row fxLayoutAlign="space-between center">
+                            <div fxLayout=row fxLayoutAlign="start start">
+                                <img class="avatar" src="../../../assets/images/avatars/joyce.jpg">
+                                <div style="padding-left: 10px"></div>
+                                <div style="padding-top: 7px; font-size: 19px">Katharina Kofler</div>
+                            </div>
+
+                            <div fxLayout=row fxLayoutAlign="end center">
+                                <div>Verified Status </div>
+                                <div fxLayout=column fxLayoutAlign="center center">
+                                    <mat-progress-bar style="width:250px" class="progressBar" value=80></mat-progress-bar>
+                                    <div>80%</div>
+                                </div> 
+                            </div>
+                            <!-- <div style="padding-top: 7px; text-align: end">Engagement Status: [Progress Bar]</div> -->
+
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <div class="mat-card">
+
+
+                        <!-- {image: '../../../assets/images/avatars/joyce.jpg', name: 'Katharina -Kati- Kofler'}, -->
+
+                        <div style="padding-top: 20px"></div>
+
+                        <div fxLayout="row" fxLayoutAlign="start center">
+
+                            <div style="padding-right: 100px"></div>
+
+                            <img src="../../../assets/images/avatars/joyce.jpg">
+
+                            <div style="padding-right: 25px"></div>
+
+
+                            <div fxLayout="column" fxLayoutAlign="start start">
+                                <div class="mat-display-1" style="padding-top: 10px">Katharina 'Kati' Kofler</div>
+                                <div class="mat-title">Volunteering for: ÖRK, FF Krems</div>
+                            </div>
+
+                        </div>
+
+                        <div style="padding-top: 15px"></div>
+
+             
+                        <div fxLayout="row">
+                            
+                            <div fxFlex=3></div>
+
+                            <mat-table #table [dataSource]="dataSource" fxFlex=80>
+                                <ng-container matColumnDef="engAsset">
+                                    <mat-header-cell *matHeaderCellDef>Engagement Asset</mat-header-cell>
+                                    <mat-cell *matCellDef="let entry">
+                                        {{entry.engAsset}}
+                                    </mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="assetType">
+                                    <mat-header-cell *matHeaderCellDef>Asset Type</mat-header-cell>
+                                    <mat-cell *matCellDef="let entry">
+                                            {{entry.assetType}}
+                                    </mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="issuer">
+                                    <mat-header-cell *matHeaderCellDef>Issuer</mat-header-cell>
+                                    <mat-cell *matCellDef="let entry">
+                                         
+                                        <img class="avatar" src="../../../assets/images/logos/OERK_Sonderlogo_rgb.jpg">
+                                        <div>{{entry.issuer}}</div> 
+                                    </mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="date">
+                                    <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+                                    <mat-cell *matCellDef="let entry">
+                                        {{entry.date}}
+                                    </mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="status">
+                                    <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+                                    <mat-cell *matCellDef="let entry">
+                                        <mat-icon *ngIf="entry.status=='close'" class="red-fg">{{entry.status}}</mat-icon>
+                                        <mat-icon *ngIf="entry.status=='check'" class="green-fg">{{entry.status}}</mat-icon>
+                                    </mat-cell>
+                                </ng-container>
+
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                            </mat-table>
+
+                            <div fxFlex></div>
+                        </div>
+                    </div>
+
+
+
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+
+
+
+                    <mat-expansion-panel-header>
+                        <mat-panel-title fxLayout=row fxLayoutAlign="space-between center">
+                            <div fxLayout=row fxLayoutAlign="start start">
+                                <img class="avatar" src="../../../assets/images/avatars/Arnold.jpg">
+                                <div style="padding-left: 10px"></div>
+                                <div style="padding-top: 7px; font-size: 19px">Max Müller</div>
+                            </div>
+                            <!-- <mat-progress-bar style="width:250px" class="progressBar" value=75></mat-progress-bar> -->
+                            <!-- <div style="padding-top: 7px; padding-right: 150px">Engagement Status: [Progress Bar]</div> -->
+                            <div fxLayout=row fxLayoutAlign="end center">
+                                <div>Verified Status </div>
+                                <div fxLayout=column fxLayoutAlign="center center">
+                                    <mat-progress-bar style="width:250px" class="progressBar" value=72></mat-progress-bar>
+                                    <div>72%</div>
+                                </div> 
+                            </div>
+
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title fxLayout=row fxLayoutAlign="space-between center">
+                            <div fxLayout=row fxLayoutAlign="start start">
+                                <img class="avatar" src="../../../assets/images/avatars/Henderson.jpg">
+                                <div style="padding-left: 10px"></div>
+                                <div style="padding-top: 7px; font-size: 19px">Heinz Fissler</div>
+                            </div>
+                            <div fxLayout=row fxLayoutAlign="end center">
+                                <div>Verified Status </div>
+                                <div fxLayout=column fxLayoutAlign="center center">
+                                    <mat-progress-bar style="width:250px" class="progressBar" value=89></mat-progress-bar>
+                                    <div>89%</div>
+                                </div> 
+                            </div>                    
+
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+    </div>
+
+</div>

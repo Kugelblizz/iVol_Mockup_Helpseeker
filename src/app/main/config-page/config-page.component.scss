@@ -49,29 +49,11 @@ $custom-typography: mat-typography-config(
         flex: 0 0 100px;
     }
 
-    // .mat-column-name {
-    //     font-size: 20px;
-    // }
-
-    .progressBar {
-        height: 8px !important;
-        padding-left: 10px;
-        margin-right: 20px;
-      }
+    .mat-column-name {
+        font-size: 20px;
+    }
 
 
-}
-
-::ng-deep .mat-progress-bar-fill::after {
-    background-color: green;
-}
-
-::ng-deep .mat-progress-bar-buffer {
-    background: red;
-}
-
-::ng-deep .mat-expansion-panel-body {
-    padding: 0;
 }
 
 
