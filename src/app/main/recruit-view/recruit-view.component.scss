@@ -16,8 +16,8 @@ $custom-typography: mat-typography-config(
         flex: 1 0 auto;
         height: 90px;
         max-height: 90px;
-        background: #1A237E;
-        background: linear-gradient(to right, #0E2A3B 0%, #34306B 100%);
+        background: #42A5F5;
+        // background: linear-gradient(to right, #0E2A3B 0%, #34306B 100%);
         text-align: center;
 
         @include media-breakpoint('xs') {
@@ -42,7 +42,7 @@ $custom-typography: mat-typography-config(
     }
 
     .mat-column-status {
-        flex: 0 0 55px;
+        // flex: 0 0 100px;
     }
 
     .mat-column-image {
@@ -60,15 +60,51 @@ $custom-typography: mat-typography-config(
       }
 
 
+
+
 }
 
-::ng-deep .mat-progress-bar-fill::after {
-    background-color: green;
+// ::ng-deep .mat-progress-bar-fill::after {
+//     background-color: green;
+// }
+
+// ::ng-deep .mat-progress-bar-buffer {
+//     background: red;
+// }
+
+::ng-deep .green-yellow-progress {
+
+    height: 8px !important;
+    padding-left: 10px;
+    margin-right: 20px;
+
+    .mat-progress-bar-fill::after {
+        background-color: green !important;
+
+    }
+
+    .mat-progress-bar-buffer {
+        background: orange;
+    }
 }
 
-::ng-deep .mat-progress-bar-buffer {
-    background: red;
+::ng-deep .green-red-progress {
+
+    height: 8px !important;
+    padding-left: 10px;
+    margin-right: 20px;
+
+    .mat-progress-bar-fill::after {
+        background-color: green !important;
+
+    }
+
+    .mat-progress-bar-buffer {
+        background: red;
+    }
 }
+
+
 
 ::ng-deep .mat-expansion-panel-body {
     padding: 0;

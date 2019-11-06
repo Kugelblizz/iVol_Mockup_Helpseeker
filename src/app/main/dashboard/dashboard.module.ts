@@ -3,10 +3,11 @@ import {RouterModule} from '@angular/router';
 
 import {FuseSharedModule} from '@fuse/shared.module';
 
-import {DashboardComponent} from './dashboard.component';
-import { MatIconModule, MatButtonModule, MatTableModule, MatIcon } from '@angular/material';
+import {DashboardComponent, ShareDialog} from './dashboard.component';
+import { MatIconModule, MatButtonModule, MatTableModule, MatIcon, MatTabsModule, MatFormFieldModule, MatSelectModule, MatCommonModule, MatDividerModule, MatMenuModule, MatTooltipModule, MatDialogModule, MatRadioModule, MatProgressSpinnerModule } from '@angular/material';
 import { FuseWidgetModule } from '@fuse/components';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -20,6 +21,7 @@ const routes = [
 @NgModule({
   declarations: [
     DashboardComponent,
+    ShareDialog
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -31,6 +33,16 @@ const routes = [
     MatButtonModule,
     MatTableModule,
     MatIconModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatCommonModule,
+    MatDividerModule,
+    MatMenuModule,
+    MatTooltipModule,
+    MatDialogModule,
+    MatRadioModule,
+    MatProgressSpinnerModule,
     
 
     FuseSharedModule,
@@ -38,6 +50,9 @@ const routes = [
   ],
   exports: [
     DashboardComponent
+  ],
+  entryComponents: [
+    ShareDialog
   ]
 })
 

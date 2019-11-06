@@ -1,0 +1,284 @@
+<link type="text/css" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Muli|Roboto:300,400,500,700|Google+Sans">
+
+
+<div class="page-layout blank p-24" style="background-color: rgb(163, 163, 163);" fusePerfectScrollbar>
+
+    <div style="padding-top: 10"></div>
+
+
+
+    <div class="header p-16 p-sm-24" fxLayout="row" fxLayoutAlign="space-between center">
+            <h1>Confirm Task Completion</h1>
+            <div></div>
+            <div style="padding-top: 70px; z-index: 255; position: relative"><img
+                    src="../../../assets/images/logos/FF_Altenberg.jpg"></div>
+        </div>
+
+    <br>
+
+    <div style="padding-top: 120px"></div>
+
+
+    <!-- <div class="mat-card" style="padding-top: 12px; padding-left: 12px" fxLayout="column" fxLayoutAlign="center start"> -->
+
+    <!-- <h2>Medical Care Transport</h2> -->
+
+
+    <div class=mat-card style="background-color: rgb(218, 99, 99); height: 80px;">
+        <div fxLayout=row fxLayoutAlign="space-between center">
+
+            <div fxLayout="row" fxLayoutAlign="start start"
+                style="color: white; font-size: 25px; letter-spacing: 0.02em; font-weight: 400; padding-left: 20px">
+
+
+                <div> Lead Firebrigade Operation </div>
+
+
+
+            </div>
+
+            <div></div>
+
+            <div style="padding-right: 25px; padding-top: 10px" fxLayoutAlign="start start">
+
+                <div>
+                    <div style="font-weight: 500; font-size: 14px; color: white;">Assigned to / Claimed by</div>
+                    <div style="padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 15px;"
+                        fxLayout="row" fxLayoutAlign="start center">
+                        <img class="avatar" src="../../../assets/images/avatars/joyce.jpg">
+                        <div style=" color: white; font-size: 20px">Katharina 'Kati' Kofler</div>
+                    </div>
+                </div>
+                <div style="padding-left: 20px; width: 200px">
+                    <div style="font-weight: 500; font-size: 14px; color: white;">Status</div>
+                    <div *ngIf="!confirmed_done"
+                        style=" color: rgb(236, 255, 169); padding-left: 10px; padding-right: 10px; padding-top: 0px; padding-bottom: 10px; font-size: 20px">
+                        Task Completed
+                    </div>
+                    <div *ngIf="confirmed_done"
+                        style="  color: rgb(185, 255, 119); padding-left: 10px; padding-right: 10px; padding-top: 0px; padding-bottom: 10px; font-size: 20px"
+                        >
+                        Confirmed
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div style="padding-top: 10px"></div>
+
+    <mat-accordion style="width: 100%;">
+        <mat-expansion-panel expanded="true" disabled=false>
+            <mat-expansion-panel-header style="background-color: rgb(218, 99, 99);">
+                <mat-panel-title style="color: white; font-size: 18px; letter-spacing: 0.02em; font-weight: 400">
+                    Confirm
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div style="height: 150px">
+
+                <div style="padding-top: 12px"></div>
+
+                <div fxLayout="row" fxLayoutAlign="start end" *ngIf="!confirmed">
+
+                    <mat-form-field style="width: 250px">
+
+                        <mat-label>Give Feedback (optional)</mat-label>
+                        <mat-select [(ngModel)]="feedbackType">
+                            <mat-option value="star">Star Rating</mat-option>
+                            <mat-option value="kudos">Kudos</mat-option>
+                        </mat-select>
+
+                    </mat-form-field>
+
+                    <div style="padding-left: 25px; padding-right: 10px; font-size: 16px"
+                        *ngIf="feedbackType=='star' || feedbackType=='kudos'">
+                        Rating:
+                    </div>
+
+                    <div *ngIf="feedbackType=='star'" style="cursor: pointer">
+                        <div fxLayout="row" fxLayoutAlign="start start" *ngIf=!starrated>
+                            <!-- <img fxFlex=60 src="../../../assets//fivestars_cropped_half.jpg">
+                                    <div fxFlex></div> -->
+                            <mat-icon class="grey-fg">star_rate</mat-icon>
+                            <mat-icon class="grey-fg">star_rate</mat-icon>
+                            <mat-icon class="grey-fg">star_rate</mat-icon>
+                            <mat-icon class="grey-fg">star_rate</mat-icon>
+                            <mat-icon (click)="starrated=true" class="grey-fg">star_rate</mat-icon>
+                        </div>
+
+                        <!-- <div fxLayout="row" fxLayoutAlign="start start" *ngIf=starrated>
+                               
+                                <mat-icon class="amber-fg">star_rate</mat-icon>
+                                <mat-icon class="amber-fg">star_rate</mat-icon>
+                                <mat-icon class="amber-fg">star_rate</mat-icon>
+                                <mat-icon class="amber-fg">star_rate</mat-icon>
+                                <mat-icon class="amber-fg">star_rate</mat-icon>
+                            </div> -->
+                        <div fxLayout="row" fxLayoutAlign="start start" *ngIf=starrated>
+                            <!-- <img fxFlex=60 src="../../../assets//fivestars_cropped_half.jpg">
+                                            <div fxFlex></div> -->
+                            <mat-icon class="red-fg">star_rate</mat-icon>
+                            <mat-icon class="red-fg">star_rate</mat-icon>
+                            <mat-icon class="red-fg">star_rate</mat-icon>
+                            <mat-icon class="red-fg">star_rate</mat-icon>
+                            <mat-icon class="red-fg">star_rate</mat-icon>
+                        </div>
+
+                    </div>
+
+                    <div *ngIf="feedbackType=='kudos'">
+                            <mat-icon class="green-fg">thumb_up</mat-icon>
+                    </div>
+                    
+
+                    <div style="height: 50px">
+                        <div *ngIf="feedbackType=='star' || feedbackType=='kudos'" fxLayout=row
+                            fxLayoutAlign="start center">
+                            <mat-form-field style="width: 300px; padding-left: 25px">
+                                <textarea matInput minRows=3 placeholder="Leave Comment (optional)"></textarea>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div style="padding-bottom: 30px"></div>
+
+                <div fxLayout="row" fxLayoutAlign="center start" *ngIf="!confirmed">
+                    <button mat-raised-button type="button" color=primary
+                        (click)="confirmed = true; doCountdown()">Confirm Completion</button>
+                    <div style="padding-left: 5px"></div>
+                    <button mat-stroked-button type="button" color=primary>Cancel</button>
+
+
+                </div>
+
+                <div *ngIf="confirmed && !confirmed_done">
+                    <div fxLayout=row fxLayoutAlign="space-between center">
+                        <div> </div>
+
+                        <mat-spinner class="mat-spinner-color"></mat-spinner>
+
+                        <div></div>
+
+                    </div>
+                </div>
+
+                <div *ngIf="confirmed && confirmed_done">
+                    <div fxLayout=row fxLayoutAlign="space-around center">
+                        <div> </div>
+                        <div fxLayout=column fxLayoutAlign="center center">
+                            <mat-icon style="font-size: 70px; padding-right: 60px" class="green-fg">check</mat-icon>
+                            <div style="font-size: 18px; padding-top: 50px">Task has been confirmed</div>
+                            <div>Completion successfully stored in Volunteer Passport and Blockchain</div>
+                        </div>
+                        <div></div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </mat-expansion-panel>
+
+    </mat-accordion>
+
+    <div style="padding-top: 10px"></div>
+
+
+
+    <mat-accordion style="width: 100%">
+        <mat-expansion-panel expanded="true" disabled=false>
+            <mat-expansion-panel-header style="background-color: rgb(218, 99, 99);">
+                <mat-panel-title style="color: white; font-size: 18px; letter-spacing: 0.02em; font-weight: 400">
+                    Details
+                </mat-panel-title>
+                <mat-panel-description>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div style="font-weight: 500; font-size: 14px;">Task Description</div>
+            <div
+                style="padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 15px; font-size: 16px">
+                The lead normally in charge is out due to sickness. We need someone with Leadership Training to substitute for him.
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="start start">
+                <div>
+                    <div style="font-weight: 500; font-size: 14px;">Date</div>
+                    <div
+                        style="padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 10px; font-size: 16px">
+                        19.06.2019
+                    </div>
+                </div>
+
+                <div style="padding-right: 10px">
+
+                </div>
+
+                <div>
+                    <div style="font-weight: 500; font-size: 14px;">Time spent</div>
+                    <div
+                        style="padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 10px; font-size: 16px">
+                        10 mins
+                    </div>
+                </div>
+            </div>
+
+            <div style="font-weight: 500; font-size: 14px;">Assigned to / Claimed by</div>
+            <div style="padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 15px;" fxLayout="row"
+                fxLayoutAlign="start center">
+                <img class="avatar" src="../../../assets/images/avatars/joyce.jpg">
+                <div style="font-size: 20px">Katharina 'Kati' Kofler</div>
+            </div>
+
+            <div style="font-weight: 500; font-size: 14px;">Status</div>
+            <div *ngIf="!confirmed_done"
+                style="padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 10px; font-size: 20px"
+                class="light-green-fg">
+Task Completed
+            </div>
+            <div *ngIf="confirmed_done"
+                style="padding-left: 10px; padding-right: 10px; padding-top: 3px; padding-bottom: 10px; font-size: 20px"
+                class="green-fg">
+                Confirmed
+            </div>
+
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <!-- <div style="padding-top: 10px"></div> -->
+
+    <!-- <mat-accordion style="width: 100%;">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header style="background-color: rgb(255, 240, 240)">
+                <mat-panel-title style="color: black; font-size: 18px; letter-spacing: 0.02em; font-weight: 400">
+                    Performance
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+    </mat-accordion> -->
+
+
+    <!-- <button  *ngIf="!showFeedbackSection" mat-raised-button type="button" color=primary (click)="showFeedbackSection=true">Give Feedback</button>
+        <a *ngIf="!showFeedbackSection" (click)="showFeedbackSection=true">Give Feedback</a> -->
+
+    <!-- </div> -->
+
+    <div style="padding-top: 10px"></div>
+
+
+
+    <div style="padding-bottom: 500px"></div>
+
+
+
+
+</div>

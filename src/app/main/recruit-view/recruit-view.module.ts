@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {FuseSharedModule} from '../../../@fuse/shared.module';
 
 import {RecruitViewComponent} from './recruit-view.component';
-import { MatCommonModule, MatTabsModule, MatSelectModule, MatInputModule, MatButtonModule, MatFormFieldModule, MatTableModule, MatExpansionModule, MatIconModule, MatProgressBar, MatProgressBarModule } from '@angular/material';
+import { MatCommonModule, MatTabsModule, MatSelectModule, MatInputModule, MatButtonModule, MatFormFieldModule, MatTableModule, MatExpansionModule, MatIconModule, MatProgressBar, MatProgressBarModule, MatProgressSpinner, MatProgressSpinnerModule } from '@angular/material';
 
 
 
@@ -32,6 +32,7 @@ const routes = [
     MatTableModule,
     MatIconModule,
     MatProgressBarModule,
+    MatProgressSpinnerModule,
 
     MatExpansionModule,
   

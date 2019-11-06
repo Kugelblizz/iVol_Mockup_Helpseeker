@@ -3,21 +3,21 @@ import {RouterModule} from '@angular/router';
 
 import {FuseSharedModule} from '../../../@fuse/shared.module';
 
-import {ConfigPageComponent} from './config-page.component';
-import { MatCommonModule, MatTabsModule, MatSelectModule, MatInputModule, MatButtonModule, MatFormFieldModule, MatTableModule, MatIconModule, MatDividerModule } from '@angular/material';
+import {ConfirmTaskComponent} from './confirm-task.component';
+import { MatCommonModule, MatTabsModule, MatSelectModule, MatInputModule, MatButtonModule, MatFormFieldModule, MatTableModule, MatIconModule, MatDividerModule, MatExpansionModule, MatProgressSpinnerModule } from '@angular/material';
 
 
 
 const routes = [
   {
-      path     : 'config',
-      component: ConfigPageComponent
+      path     : 'confirm',
+      component: ConfirmTaskComponent
   }
 ];
 
 @NgModule({
   declarations: [
-    ConfigPageComponent,
+    ConfirmTaskComponent,
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -32,13 +32,15 @@ const routes = [
     MatTableModule,
     MatIconModule,
     MatDividerModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
 
     FuseSharedModule
   ],
   exports: [
-    ConfigPageComponent
+    ConfirmTaskComponent
   ]
 })
 
-export class ConfigPageModule {
+export class ConfirmTaskModule {
 }

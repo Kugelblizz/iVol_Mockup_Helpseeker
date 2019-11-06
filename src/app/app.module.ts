@@ -25,6 +25,9 @@ import { TasksFinishedModule } from './main/tasks-finished/tasks-finished.module
 import { VerifyCompetenceModule } from './main/verify-competence/verify-competence.module';
 import { ConfigPageModule } from "./main/config-page/config-page.module";
 import { RecruitViewModule } from './main/recruit-view/recruit-view.module';
+import { ConfirmTaskModule } from './main/confirm-task/confirm-task.module';
+import { ConfirmTaskFFModule } from './main/confirm-task-ff1/confirm-task.module';
+import { ConfirmTaskFF2Module } from './main/confirm-task-ff2/confirm-task.module';
 
 
 const appRoutes: Routes = [
@@ -76,6 +79,18 @@ const children: Routes = [
         path: 'recruit',
         loadChildren: './main/recruit-view/recruit-view.module#RecruitViewModule',
     },
+    {
+        path: 'confirm',
+        loadChildren: './main/confirm-task/confirm-task.module#ConfirmTaskModule',
+    },
+    {
+        path: 'confirmff1',
+        loadChildren: './main/confirm-task-ff1/confirm-task.module#ConfirmTaskFFModule',
+    },
+    {
+        path: 'confirmff2',
+        loadChildren: './main/confirm-task-ff2/confirm-task.module#ConfirmTaskFF2Module',
+    },
 ];
 
 @NgModule({
@@ -117,6 +132,9 @@ const children: Routes = [
         VerifyCompetenceModule,
         ConfigPageModule,
         RecruitViewModule,
+        ConfirmTaskModule,
+        ConfirmTaskFFModule,
+        ConfirmTaskFF2Module
     ],
     bootstrap   : [
         AppComponent

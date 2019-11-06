@@ -11,23 +11,32 @@ const DATA = [
 
 
 @Component({
-  selector: 'config-page',
-  templateUrl: './config-page.component.html',
-  styleUrls: ['./config-page.component.scss']
+  selector: 'confirm-task-ff2',
+  templateUrl: './confirm-task.component.html',
+  styleUrls: ['./confirm-task.component.scss']
 })
-export class ConfigPageComponent implements OnInit {
+export class ConfirmFF2TaskComponent implements OnInit {
 
   dataSource = new MatTableDataSource<any>();
   displayedColumns = ['label', 'pre', 'post'];
-  taskRow2hidden: boolean;
-  achRow2hidden: boolean;
+  feedbackType: any;
+  showFeedbackSection: boolean;
+  starrated: boolean;
+  confirmed_done: boolean;
 
   ngOnInit() {
    
     this.dataSource.data = DATA;
-    this.taskRow2hidden = true;
-    this.achRow2hidden = true;
+    this.showFeedbackSection = false;
+    this.starrated = false;
+    this.confirmed_done = false
     console.log("config page");
+  }
+
+  doCountdown() {
+    setTimeout(() => {
+      this.confirmed_done = true;
+    }, 1500);
   }
 
 }
